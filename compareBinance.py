@@ -97,12 +97,12 @@ for i in range(1, 10000):
 
         if askGap:
             if jonviBot.ask1 == currentBotAskPrice and jonviBot.ask1vol == currentBotAskVol:
-                print "ROBOT PLACE BUY ORDER"
+                print("ROBOT PLACE BUY ORDER")
                 api_key1 = 'MTc0YTkwNTAtOGE0NC00ZmI5LWIyZDktMmM1ZWRlM2VkYzdk'
                 api_secret1 = 'YjJmMTVmYjUtZmIyMy00YTg5LWEyODYtM2I1YWI3MDYzMGZk'
                 jonviBuyBot = JonviClient_Buy(api_key1, api_secret1)
                 resp1 = jonviBuyBot.get_access_token()
-                print "ROBOT PLACE BUY ORDER @ " + str(jonviBot.askPrice)
+                print("ROBOT PLACE BUY ORDER @ " + str(jonviBot.askPrice))
                 resp1 = jonviBuyBot.place_order(pair, jonviBot.askVol, jonviBot.askPrice, 1)
                 
                 isPlaceAskOrder = 0
@@ -113,10 +113,10 @@ for i in range(1, 10000):
                 isPlaceAskOrder = 0
 
         if askLoss:
-            print "CANCEL ASK ORDER PLACE NEW ONE"
+            print("CANCEL ASK ORDER PLACE NEW ONE")
             jonviBot.current_order(pair)
             askID = jonviBot.askID
-            print askID
+            print(askID)
             resp = jonviBot.cancel_order(askID)
             isPlaceAskOrder = 0
     
@@ -139,7 +139,7 @@ for i in range(1, 10000):
                 api_secret1 = 'YjJmMTVmYjUtZmIyMy00YTg5LWEyODYtM2I1YWI3MDYzMGZk'
                 jonviBuyBot = JonviClient_Buy(api_key1, api_secret1)
                 resp1 = jonviBuyBot.get_access_token()
-                print "ROBOT PLACE SELL ORDER @ " + str(jonviBot.bidPrice)
+                print ("ROBOT PLACE SELL ORDER @ " + str(jonviBot.bidPrice))
                 resp1 = jonviBuyBot.place_order(pair, jonviBot.bidVol, jonviBot.bidPrice, 2)
                 isPlaceBidOrder = 0
             else:
@@ -148,17 +148,17 @@ for i in range(1, 10000):
                 resp = jonviBot.cancel_order(bidID)
                 isPlaceBidOrder = 0
         if bidLoss:
-            print "CANCEL BID ORDER PLACE NEW ONE"
+            print ("CANCEL BID ORDER PLACE NEW ONE")
             jonviBot.current_order(pair)
             bidID = jonviBot.bidID
-            print bidID
+            print (bidID)
             resp = jonviBot.cancel_order(bidID)
             isPlaceBidOrder = 0
 
-    print currentBotAskPrice, currentBotBidPrice
-    print binanceAskPrice, askGap, marginAskPrice, marginAskLoss
-    print binanceBidPrice, bidGap, marginBidPrice, marginBidLoss
-    print "#################"
+    print (currentBotAskPrice, currentBotBidPrice)
+    print (binanceAskPrice, askGap, marginAskPrice, marginAskLoss)
+    print (binanceBidPrice, bidGap, marginBidPrice, marginBidLoss)
+    print ("#################")
     
 
     time.sleep(1);
