@@ -18,8 +18,6 @@ api_secret='MjUxMWZlNTItNzNjZS00NjViLWFiY2ItMTgxZmUzNWE4YTNj'
 jonviBot = JonviClient(api_key, api_secret)
 
 resp = jonviBot.get_access_token()
-# print json.dumps(jonviBot.current_order(pair),indent=4)
-
 
 isPlaceAskOrder = 0
 isPlaceBidOrder = 0
