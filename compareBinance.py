@@ -3,7 +3,7 @@ from jonvi_api_buy import JonviClient_Buy
 from binanceapi import BinanceClient
 import time
 # import request
-import random
+# import random
 import json
 
 pair = "btcusdt"
