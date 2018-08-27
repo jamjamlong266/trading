@@ -6,8 +6,8 @@ import time
 # import random
 import json
 
-pair = "btcusdt"
-trading_pair = {"btcusdt"}
+pair = "bchusdt"
+trading_pair = {"bchusdt"}
 
 binance_api_key="8ovOuiaMx7NwodKm34xTH4Dq62zWZgB8Whnkojgx9ZfZLEhhPIlPAqFuOqzP6cIg" 
 binance_secret_key="WXDjj0Ws6jLrTEyozR9mXbOCYIcFigojokRIB1q5uNkytDFU1ccYci4EIzIEUdA7"
@@ -53,7 +53,7 @@ currentBotBidVol = 0
 for i in range(1, 10000):
 
     # ..Get binance order book
-    binanceOrderBook = binance.get_order_book(symbol=pair.upper(), limit=5)
+    binanceOrderBook = binance.get_order_book(symbol="BCCUSDT", limit=5)
     binanceAskPrice = float(binanceOrderBook["asks"][0][0])
     binanceBidPrice = float(binanceOrderBook["bids"][0][0])
 
@@ -72,7 +72,7 @@ for i in range(1, 10000):
         
         botAskPrice = binanceAskPrice + (1 * margin)
         currentBotAskPrice = botAskPrice
-        resp = jonviBot.place_order(pair, 0.001, currentBotAskPrice, 2) # 1 bid 2 ask
+        resp = jonviBot.place_order(pair, 0.01, currentBotAskPrice, 2) # 1 bid 2 ask
         isPlaceAskOrder = 1
     
     # ..Bot place Bid order
@@ -80,7 +80,7 @@ for i in range(1, 10000):
 
         botBidPrice = binanceBidPrice - (1 * margin)
         currentBotBidPrice = botBidPrice
-        resp = jonviBot.place_order(pair, 0.001, currentBotBidPrice, 1) # 1 bid 2 ask
+        resp = jonviBot.place_order(pair, 0.01, currentBotBidPrice, 1) # 1 bid 2 ask
         isPlaceBidOrder = 1
 
     # ..Robot auto take ask order

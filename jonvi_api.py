@@ -115,26 +115,30 @@ class JonviClient(object):
     def current_order(self, pair):
         params = {'accessToken':self.xtoken, 'txPair': pair}
         response = requests.get("https://api.jonvi.com/order/get_current_order",headers=self.headers,params=params)
-        resp = json.loads(response.text)
 
-        self.askID = 0
-        self.askPrice = 0
-        self.askVol = 0
-
-        self.bidID = 0
-        self.bidPrice = 0
-        self.bidVol = 0
-
-        if resp['data'] != []:
-            for orderId in resp['data']:
-                if orderId['side'] == 2:
-                    self.askID = orderId['id']
-                    self.askPrice = orderId['price']
-                    self.askVol = orderId['volume']
-                elif orderId['side'] == 1:
-                    self.bidID = orderId['id']
-                    self.bidPrice = orderId['price']
-                    self.bidVol = orderId['volume']
+        if response.status_code == 200:
+            resp = json.loads(response.text)
+    
+            self.askID = 0
+            self.askPrice = 0
+            self.askVol = 0
+    
+            self.bidID = 0
+            self.bidPrice = 0
+            self.bidVol = 0
+        
+            if resp['data'] != []:
+                for orderId in resp['data']:
+                    if orderId['side'] == 2:
+                        self.askID = orderId['id']
+                        self.askPrice = orderId['price']
+                        self.askVol = orderId['volume']
+                    elif orderId['side'] == 1:
+                        self.bidID = orderId['id']
+                        self.bidPrice = orderId['price']
+                        self.bidVol = orderId['volume']
+        else:
+            self.current_order(pair)
         return resp
         
 
