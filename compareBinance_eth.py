@@ -13,8 +13,8 @@ binance_api_key="8ovOuiaMx7NwodKm34xTH4Dq62zWZgB8Whnkojgx9ZfZLEhhPIlPAqFuOqzP6cI
 binance_secret_key="WXDjj0Ws6jLrTEyozR9mXbOCYIcFigojokRIB1q5uNkytDFU1ccYci4EIzIEUdA7"
 binance=BinanceClient(binance_api_key,binance_secret_key)
 
-api_key='MDRjNTJmNzktOWNjZi00ODUyLWI5Y2QtMjQyOTBjYmU5ZWI4' # robot 2
-api_secret='MjUxMWZlNTItNzNjZS00NjViLWFiY2ItMTgxZmUzNWE4YTNj' # robot 2
+api_key='MTc0YTkwNTAtOGE0NC00ZmI5LWIyZDktMmM1ZWRlM2VkYzdk' # robot 3
+api_secret='YjJmMTVmYjUtZmIyMy00YTg5LWEyODYtM2I1YWI3MDYzMGZk' # robot 3
 jonviBot = JonviClient(api_key, api_secret)
 
 resp = jonviBot.get_access_token()
@@ -98,8 +98,8 @@ for i in range(1, 10000):
         if askGap:
             if jonviBot.ask1 == currentBotAskPrice and jonviBot.ask1vol == currentBotAskVol:
                 print("ROBOT PLACE BUY ORDER")
-                api_key1 = 'MTc0YTkwNTAtOGE0NC00ZmI5LWIyZDktMmM1ZWRlM2VkYzdk'  # robot 3
-                api_secret1 = 'YjJmMTVmYjUtZmIyMy00YTg5LWEyODYtM2I1YWI3MDYzMGZk' # robot 3
+                api_key1 = 'NTM5ZWQyN2MtMTI1Zi00OTU2LTliZWUtNmI5NmIyZDEwMWZl'  # robot 4
+                api_secret1 = 'MTU5OTg5MjgtNzk2Mi00NDk3LTk3OTAtYzg3ZjNmNjgyYWE5' # robot 4
                 jonviBuyBot = JonviClient_Buy(api_key1, api_secret1)
                 resp1 = jonviBuyBot.get_access_token()
                 print("ROBOT PLACE BUY ORDER @ " + str(jonviBot.askPrice))
@@ -135,12 +135,12 @@ for i in range(1, 10000):
         if bidGap:
             if jonviBot.bid1 == currentBotBidPrice and jonviBot.bid1vol == currentBotBidVol:
                 
-                # api_key1 = 'MTc0YTkwNTAtOGE0NC00ZmI5LWIyZDktMmM1ZWRlM2VkYzdk' #robot 3
-                # api_secret1 = 'YjJmMTVmYjUtZmIyMy00YTg5LWEyODYtM2I1YWI3MDYzMGZk' #robot 3
-                # jonviBuyBot = JonviClient_Buy(api_key1, api_secret1)
-                # resp1 = jonviBuyBot.get_access_token()
-                # print ("ROBOT PLACE SELL ORDER @ " + str(jonviBot.bidPrice))
-                # resp1 = jonviBuyBot.place_order(pair, jonviBot.bidVol, jonviBot.bidPrice, 2)
+                api_key1 = 'NTM5ZWQyN2MtMTI1Zi00OTU2LTliZWUtNmI5NmIyZDEwMWZl' #robot 4
+                api_secret1 = 'MTU5OTg5MjgtNzk2Mi00NDk3LTk3OTAtYzg3ZjNmNjgyYWE5' #robot 4
+                jonviBuyBot = JonviClient_Buy(api_key1, api_secret1)
+                resp1 = jonviBuyBot.get_access_token()
+                print ("ROBOT PLACE SELL ORDER @ " + str(jonviBot.bidPrice))
+                resp1 = jonviBuyBot.place_order(pair, jonviBot.bidVol, jonviBot.bidPrice, 2)
                 isPlaceBidOrder = 0
             else:
                 jonviBot.current_order(pair)

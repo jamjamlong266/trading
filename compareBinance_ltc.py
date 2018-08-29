@@ -6,15 +6,15 @@ import time
 # import random
 import json
 
-pair = "bchusdt"
-trading_pair = {"bchusdt"}
+pair = "ltcusdt"
+trading_pair = {"ltcusdt"}
 
 binance_api_key="8ovOuiaMx7NwodKm34xTH4Dq62zWZgB8Whnkojgx9ZfZLEhhPIlPAqFuOqzP6cIg" 
 binance_secret_key="WXDjj0Ws6jLrTEyozR9mXbOCYIcFigojokRIB1q5uNkytDFU1ccYci4EIzIEUdA7"
 binance=BinanceClient(binance_api_key,binance_secret_key)
 
-api_key='MDRjNTJmNzktOWNjZi00ODUyLWI5Y2QtMjQyOTBjYmU5ZWI4' # robot 2
-api_secret='MjUxMWZlNTItNzNjZS00NjViLWFiY2ItMTgxZmUzNWE4YTNj' # robot 2
+api_key='NTM5ZWQyN2MtMTI1Zi00OTU2LTliZWUtNmI5NmIyZDEwMWZl' # robot 4
+api_secret='MTU5OTg5MjgtNzk2Mi00NDk3LTk3OTAtYzg3ZjNmNjgyYWE5' # robot 4
 jonviBot = JonviClient(api_key, api_secret)
 
 resp = jonviBot.get_access_token()
@@ -53,7 +53,7 @@ currentBotBidVol = 0
 for i in range(1, 10000):
 
     # ..Get binance order book
-    binanceOrderBook = binance.get_order_book(symbol="BCCUSDT", limit=5)
+    binanceOrderBook = binance.get_order_book(symbol="LTCUSDT", limit=5)
     binanceAskPrice = float(binanceOrderBook["asks"][0][0])
     binanceBidPrice = float(binanceOrderBook["bids"][0][0])
 

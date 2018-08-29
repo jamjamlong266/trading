@@ -22,8 +22,8 @@ resp = jonviBot.get_access_token()
 isPlaceAskOrder = 0
 isPlaceBidOrder = 0
 
-margin = 0.002
-marketGap = 0.001
+margin = 0.005
+marketGap = 0.007
 
 botAskPrice = 0
 botBidPrice = 0
@@ -70,7 +70,7 @@ for i in range(1, 10000):
     # ..Bot place Ask order
     if (isPlaceAskOrder == 0) and (jonviBot.askID == 0):
         
-        botAskPrice = binanceAskPrice + (1 * margin)
+        botAskPrice = binanceAskPrice * (1 + margin)
         currentBotAskPrice = botAskPrice
         resp = jonviBot.place_order(pair, 0.001, currentBotAskPrice, 2) # 1 bid 2 ask
         isPlaceAskOrder = 1
@@ -78,7 +78,7 @@ for i in range(1, 10000):
     # ..Bot place Bid order
     if (isPlaceBidOrder == 0) and (jonviBot.bidID == 0):
 
-        botBidPrice = binanceBidPrice - (1 * margin)
+        botBidPrice = binanceBidPrice * (1 - margin)
         currentBotBidPrice = botBidPrice
         resp = jonviBot.place_order(pair, 0.001, currentBotBidPrice, 1) # 1 bid 2 ask
         isPlaceBidOrder = 1
